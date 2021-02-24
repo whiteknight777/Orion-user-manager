@@ -68,7 +68,7 @@
         ],
         "max-len": [
             "error",
-            120
+            260
         ],
         "import/no-extraneous-dependencies": "off",
         "no-unused-vars": [

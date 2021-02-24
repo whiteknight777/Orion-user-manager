@@ -2,7 +2,11 @@ const colors = require('tailwindcss/colors');
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
-    purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+    purge: ['src/**/*.js',
+        'src/**/*.jsx',
+        'src/**/*.ts',
+        'src/**/*.tsx',
+        'public/**/*.html'],
     darkMode: false, // or 'media' or 'class'
     theme: {
         extend: {},
@@ -13,12 +17,17 @@ module.exports = {
             xl: '1440px',
         },
         textColor: {
+            white: colors.white,
             gray: colors.coolGray,
-            primary: colors.indigo[400],
+            indigo: colors.indigo,
+            primary: colors.indigo[600],
             secondary: '#ffed4a',
             danger: '#e3342f',
         },
         colors: {
+            primary: colors.indigo[500],
+            secondary: '#ffed4a',
+            danger: '#e3342f',
             indigo: colors.indigo,
             white: colors.white,
             black: colors.black,

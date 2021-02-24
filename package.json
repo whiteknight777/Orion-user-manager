@@ -6,17 +6,25 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.2",
+    "chokidar-cli": "^2.1.0",
+    "moment": "^2.22.2",
+    "npm-run-all": "^4.1.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-icons": "^4.2.0",
     "react-scripts": "4.0.2",
     "web-vitals": "^1.1.0"
   },
   "scripts": {
-    "start": "npm run watch:css && react-scripts start",
-    "build": "npm run watch:css && react-scripts build",
+    "build:tailwind": "tailwind build src/main.css -o src/assets/tailwind.css",
+    "watch:tailwind": "chokidar 'src/**/*.css' 'src/**/*.scss' --ignore src/main.css -c 'npm run build:tailwind'",
+    "start": "npm-run-all build:tailwind --parallel watch:tailwind start:react",
+    "start:react": "react-scripts start",
+    "prebuild": "run-s build:tailwind",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "watch:css": "postcss src/index.css --use autoprefixer -o src/assets/tailwind.css"
+    "watch:css": "postcss src/assets/tailwind.css --use autoprefixer -o src/assets/tailwind.css"
   },
   "eslintConfig": {
     "extends": [
@@ -27,14 +35,17 @@
   "devDependencies": {
     "@babel/cli": "^7.10.3",
     "@babel/preset-react": "^7.10.1",
+    "autoprefixer": "^10.2.4",
     "babel-eslint": "^10.1.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.22.0",
-    "postcss": "^7.0.35",
-    "postcss-cli": "^7.1.2",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3"
+    "postcss": "^8.1.0",
+    "postcss-cli": "^8.3.1",
+    "tailwind": "^4.0.0",
+    "tailwindcss": "^2.0.3",
+    "tailwindcss-cli": "^0.1.2"
   },
   "browserslist": {
     "production": [
