@@ -9,7 +9,7 @@ function App() {
         <div className="bg-gray-100 min-h-screen">
             <Navbar />
             <Header />
-            <main>
+            <main className="main-height">
                 <Dashboard />
             </main>
         </div>

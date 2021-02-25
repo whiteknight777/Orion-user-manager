@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { BiSearch } from 'react-icons/bi';
 import UserMenu from './UserMenu';
 
 class Navbar extends PureComponent {
@@ -9,10 +10,10 @@ class Navbar extends PureComponent {
         };
     }
 
-    toggleUserMenu() {
-        this.setState(prev => ({
-            open: !prev.open,
-        }));
+    toggleUserMenu(value) {
+        this.setState({
+            open: value,
+        });
     }
 
     render() {
@@ -21,7 +22,7 @@ class Navbar extends PureComponent {
             <nav className="bg-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16">
-                        <div className="flex items-center">
+                        <div className="flex items-center w-11/12">
                             <div className="flex flex-shrink-0 flex-row justify-between w-32 items-center">
                                 <img
                                   className="h-8 w-8"
@@ -30,32 +31,48 @@ class Navbar extends PureComponent {
                                 />
                                 <span className="text-2xl font-bold text-gray-600">ORION</span>
                             </div>
-                            <div className="hidden md:block">
-                                <div className="ml-10 flex items-baseline space-x-4">
+                            <div className="hidden md:block w-3/4">
+                                <div className="ml-10 flex  items-baseline space-x-4">
                                     <span
                                       href="#"
-                                      className="flex flex-row items-center
-                                       text-gray-100 bg-indigo-400 hover:text-gray-100 px-3 py-2 rounded-sm text-sm font-medium"
+                                      className="flex flex-row items-center flex-initial hover:shadow-md
+                                       text-gray-100 bg-indigo-500 hover:text-gray-100 px-3 py-2 rounded-md text-md font-medium"
                                     >
-                                        Dashboard
+                                        User Manager
                                     </span>
 
                                     <span
                                       href="#"
-                                      className="flex flex-row items-center
-                                      text-gray-600 hover:bg-indigo-600 hover:text-gray-100 px-3 py-2 rounded-sm text-sm font-medium"
+                                      className="flex flex-row items-center flex-initial hover:shadow-md
+                                      text-gray-600 hover:bg-indigo-500 hover:text-gray-100 px-3 py-2 rounded-md text-md font-medium"
                                     >
-                                        Settings
+                                        Office Map
                                     </span>
 
                                 </div>
                             </div>
+
+                            <div className="flex items-center justify-between w-3/4 sm:col-span-2">
+                                <div className="divider flex-initial" />
+                                <div className="mt-1 w-4/4 mr-8 flex-initial flex rounded-md shadow-sm">
+                                    <BiSearch className="absolute z-10 mt-2.5 ml-2" />
+                                    <input
+                                      type="text"
+                                      name="company_website"
+                                      id="company_website"
+                                      className="py-2 px-8 flex-1 w-full border border-gray-300
+                                       rounded-lg sm:text-sm text-gray-600 focus:outline-none focus:ring-1 focus:ring-indigo-800 focus:border-transparent"
+                                      placeholder="Search"
+                                    />
+                                </div>
+                            </div>
                         </div>
-                        <div className="hidden md:block">
+                        <div className="hidden md:block w-auto">
                             <div className="ml-4 flex items-center md:ml-6">
                                 <button
                                   type="button"
-                                  className="bg-indigo-400 p-1 rounded-full text-gray-200 hover:text-gray-200 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-800 focus:ring-gray-200"
+                                  className="bg-gray-100 p-1 border-gray-100 hover:shadow-md rounded-full text-gray-700 hover:text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2
+                                  focus:text-indigo-800 focus:ring-offset-2 focus:ring-offset-indigo-800 focus:ring-gray-200"
                                 >
                                     <span className="sr-only">View notifications</span>
                                     <svg
@@ -76,10 +93,13 @@ class Navbar extends PureComponent {
                                 </button>
 
                                 <div
-                                  className="ml-3 relative"
+                                  className="ml-3 relative hover:shadow-md"
                                   aria-hidden
                                   onClick={() => {
-                                      this.toggleUserMenu();
+                                      this.toggleUserMenu(true);
+                                  }}
+                                  onBlur={() => {
+                                      this.toggleUserMenu(false);
                                   }}
                                 >
                                     <button
@@ -121,6 +141,7 @@ class Navbar extends PureComponent {
                         </div>
                     </div>
                 </div>
+                {/* MOBILE MENU */}
                 <div className="md:hidden" id="mobile-menu">
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                         <span

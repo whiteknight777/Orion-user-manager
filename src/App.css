@@ -5,3 +5,9 @@
     flex-flow: row;
     align-items: baseline;
 }
+.main-height{
+    min-height: 100vh;
+}
+.max-content{
+    max-height: 650px;
+}

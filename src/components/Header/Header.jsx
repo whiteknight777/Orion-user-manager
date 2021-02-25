@@ -7,7 +7,7 @@ class Header extends PureComponent {
         return (
             <header className="bg-indigo-600 shadow">
                 <div className="lg:flex lg:items-center lg:justify-between">
-                    <div className="w-3/4 lg:mx-auto flex pt-6 pb-36 sm:px-6 lg:px-8">
+                    <div className="w-4/5 lg:mx-auto flex pt-8 pb-48 sm:px-6">
                         <div className="flex-1 min-w-0">
                             <h2 className="font-bold leading-7 text-gray-200 md:text-2xl sm:text-3xl sm:truncate">
                                 Welcome, John Doe
